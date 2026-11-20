@@ -1,0 +1,20 @@
+# Local (credential-free) version of an ELT-Bench project base.
+# Sources are flat files instead of Postgres/Mongo/S3/API, and the
+# destination is a DuckDB file instead of Snowflake.
+flat_files:
+- format: csv
+  path: sources/publisher.csv
+  table: publisher
+- format: csv
+  path: sources/author.csv
+  table: author
+- format: csv
+  path: sources/book.csv
+  table: book
+- format: csv
+  path: sources/book_author.csv
+  table: book_author
+duckdb:
+  config:
+    raw_schema: raw
+    model_schema: models

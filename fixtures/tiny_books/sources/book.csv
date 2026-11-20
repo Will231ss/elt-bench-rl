@@ -1,0 +1,13 @@
+book_id,title,num_pages,publication_date,publisher_id,price
+100,A Wizard of Earthsea,183,1968-11-01,1,9.99
+101,The Left Hand of Darkness,304,1969-03-01,1,14.50
+102,Guards! Guards!,416,1989-11-01,2,12.00
+103,Small Gods,384,1992-05-01,2,
+104,Good Omens,416,1990-05-01,2,15.25
+105,American Gods,465,2001-06-19,2,18.00
+106,Kindred,264,1979-06-01,3,13.75
+107,Parable of the Sower,345,1993-10-01,3,16.40
+108,Stories of Your Life,281,2002-07-01,3,17.00
+109,Exhalation,368,2019-05-07,3,21.00
+110,Consider Phlebas,471,1987-04-23,3,19.99
+111,Anansi Boys,336,2005-09-20,2,18.00

@@ -1,0 +1,7 @@
+column_name,column_description
+book_id,the unique identifier of the book
+title,the title of the book
+num_pages,the number of pages of the book
+publication_date,the publication date of the book (YYYY-MM-DD)
+publisher_id,the id of the publisher of the book
+price,the list price of the book in dollars; may be missing

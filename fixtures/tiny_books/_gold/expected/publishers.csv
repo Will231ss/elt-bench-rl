@@ -1,0 +1,5 @@
+publisher_id,publisher_name,num_books,title_of_the_oldest_book,avg_price
+1,Penguin,2,A Wizard of Earthsea,12.25
+2,Harper,5,Guards! Guards!,15.81
+3,Tor,5,Kindred,17.63
+4,Small Press Co,0,,

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+*.duckdb
+*.duckdb.wal
+.pytest_cache/
+*credential*.json
+.env
+runs/
