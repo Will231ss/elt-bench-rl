@@ -35,6 +35,10 @@ from elt_rl.warehouse.base import Namespace, Warehouse, frame_fingerprint
 
 logger = logging.getLogger(__name__)
 
+# Reference fingerprints only depend on (warehouse, task), so compute them once
+# per process instead of once per rollout.
+_REF_CACHE: dict[tuple[str, str], dict[str, str]] = {}
+
 
 @dataclass
 class RewardWeights:
@@ -133,6 +137,10 @@ class ELTGrader:
     def _reference_fingerprints(self) -> dict[str, str]:
         if self._ref_fingerprints is not None:
             return self._ref_fingerprints
+        key = (self.warehouse.name, str(self.task.project_dir))
+        if key in _REF_CACHE:
+            self._ref_fingerprints = _REF_CACHE[key]
+            return self._ref_fingerprints
         ref_ns = self.warehouse.create_namespace(f"ref_{uuid.uuid4().hex[:8]}", self._database())
         try:
             self.warehouse.preload_raw(ref_ns, self.task)
@@ -141,7 +149,7 @@ class ELTGrader:
                 cols = self._raw_columns(table)
                 if cols:
                     fps[table] = self.warehouse.fingerprint(ref_ns, ref_ns.raw_schema, table, cols)
-            self._ref_fingerprints = fps
+            self._ref_fingerprints = _REF_CACHE[key] = fps
         finally:
             self.warehouse.drop_namespace(ref_ns)
         return self._ref_fingerprints
